@@ -7,6 +7,7 @@ if(!empty($vercode)){
         if ($_POST['vercode']!=$vercode){
          echo("[err]invalid vercode[/err]");
          exit();
+         //sdkfjsldfjsldfjsldkfjl
         }
 }
 
@@ -396,7 +397,7 @@ function etwp_insert_post($postarr, $wp_error = false) {
     //global $wpdb, $user_ID;
 	global $user_ID;
 	$mydb = new wpdb(DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);//重新建立数据库连接
-	
+
     $user_id=$user_ID;
     $defaults = array('post_status' => 'draft', 'post_type' => 'post', 'post_author' => $user_id,
         'ping_status' => get_option('default_ping_status'), 'post_parent' => 0,
@@ -849,16 +850,16 @@ function etwp_write_post() {
 
  if (!isset( $_POST['publish'] ))
   $_POST['publish'] = 'publish';
-  
+
  if (!isset( $_POST['visibility'] ))
   $_POST['visibility'] = 'public';
-  
+
  if (empty( $_POST['post_status'] ))
   $_POST['post_status'] = 'publish';
-  
+
  if (!isset( $_POST['comment_status'] ))
   $_POST['comment_status'] = 'open';
-  
+
 
  if ( isset($_POST['visibility']) ) {
   switch ( $_POST['visibility'] ) {
@@ -887,9 +888,9 @@ function etwp_write_post() {
 
  if ( empty($post_ID) )
   return 0;
- 
+
  //add_meta( $post_ID );
- //zzcity add 
+ //zzcity add
  if ( isset($_POST['meta']) && $_POST['meta'] ) {
   foreach ( $_POST['meta'] as $key => $value )
      add_post_meta( $post_ID, $value['key'], $value['value']);
@@ -940,22 +941,22 @@ if (!empty($_POST['zztime']) ) {
     $zztime=strtotime($_POST['zztime']);
 }
 if($zztime>0){
-    $_POST['hidden_aa']=date('Y');    
-    $_POST['hidden_mm']=date('n');    
-    $_POST['hidden_jj']=date('j');    
-    $_POST['hidden_hh']=date('H');    
-    $_POST['hidden_mn']=date('i');    
-    $_POST['hidden_ss']=date('s');    
+    $_POST['hidden_aa']=date('Y');
+    $_POST['hidden_mm']=date('n');
+    $_POST['hidden_jj']=date('j');
+    $_POST['hidden_hh']=date('H');
+    $_POST['hidden_mn']=date('i');
+    $_POST['hidden_ss']=date('s');
 
 //    $zztime=date('Y-m-d H:i:s',$zztime);
 //    $zztime=get_gmt_from_date($zztime);
 //    $zztime=strtotime($zztime);
-    $_POST['aa']=date('Y',$zztime);    
-    $_POST['mm']=date('n',$zztime);    
-    $_POST['jj']=date('j',$zztime);    
-    $_POST['hh']=date('H',$zztime);    
-    $_POST['mn']=date('i',$zztime);    
-    $_POST['ss']=date('s',$zztime);    
+    $_POST['aa']=date('Y',$zztime);
+    $_POST['mm']=date('n',$zztime);
+    $_POST['jj']=date('j',$zztime);
+    $_POST['hh']=date('H',$zztime);
+    $_POST['mn']=date('i',$zztime);
+    $_POST['ss']=date('s',$zztime);
 }
 
 wp_reset_vars(array('action', 'safe_mode', 'withcomments', 'posts', 'content', 'edited_post_title', 'comment_error', 'profile', 'trackback_url', 'excerpt', 'showcomments', 'commentstart', 'commentend', 'commentorder'));
@@ -985,7 +986,7 @@ $flagthumb=0;
 foreach($attachs as $aindex => $afile){
     if(trim($afile)!=''){
         $thumbnail_id = et_media_handle_upload($afile, $post_ID);
-    
+
         if($_POST['litpic']==$afile){
             set_post_thumbnail( $post_ID, $thumbnail_id );
         }else{
@@ -1022,7 +1023,7 @@ function mime($file) {
         } elseif (function_exists('mime_content_type')) {
                 $mime = mime_content_type($file);
         }    elseif (function_exists('exif_imagetype')){
-                $mime = image_type_to_mime_type(exif_imagetype($file));                
+                $mime = image_type_to_mime_type(exif_imagetype($file));
         }
     return $mime;
 }
